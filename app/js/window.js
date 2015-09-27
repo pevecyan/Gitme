@@ -97,14 +97,16 @@ function applyEffectOnSelection(effect){
 				editedSelection = editor.lineSelection(selection);
 				break;
 		}
-		if(effect!="line"){
-			var previousSelectionStart = $("#editor")[0].selectionStart;
-			$("#editor").val($("#editor").val().replace(selection,editedSelection));
-			$("#editor")[0].selectionStart = previousSelectionStart;
-			$("#editor")[0].selectionEnd = $("#editor")[0].selectionStart +editedSelection.length;
-		}else{
+		
+		var selectionStart = $("#editor")[0].selectionStart;
+		var selectionEnd = $("#editor")[0].selectionEnd;
+		var preText = $("#editor").val().substring(0, selectionStart);
+		var postText = $("#editor").val().substring(selectionEnd);
+		
+		$("#editor").val(preText+editedSelection+postText);
+		$("#editor")[0].selectionStart = preText.length;
+		$("#editor")[0].selectionEnd = preText.length + editedSelection.length;
 			
-		}
 		console.log(selection);
 		editor.compileText(false);
 	}

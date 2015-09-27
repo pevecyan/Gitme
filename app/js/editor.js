@@ -45,10 +45,10 @@ module.exports = {
 		return "###### "+text;
 	},
 	bulletSelection: function(text){
-		return "- "+text;
+		return "* "+text;
 	},
 	lineSelection: function(text){
-		return "\n---" ;	
+		return "---" ;	
 	},
 	usaved: false,	
 };

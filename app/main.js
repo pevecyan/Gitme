@@ -83,7 +83,7 @@ function createMenu(){
   editMenu.append(new MenuItem({label:"Select All",accelerator: "Ctrl+A", click: function(){editText('select-all');}}));
   
   var viewMenu = new Menu();
-  viewMenu.append(new MenuItem({label:"Toggle Full Screen", accelerator:"F11"}));
+  viewMenu.append(new MenuItem({label:"Toggle Full Screen", accelerator:"F11", click: function(){ toggleFullScreen();}}));
   
   var menu = new Menu();
   menu.append(new MenuItem({ label: 'File', type: "submenu",submenu:fileMenu}));
@@ -134,6 +134,13 @@ function editH6(){
 }
 function editText(action){
   mainWindow.webContents.send('edit-markdown', action);
+}
+
+function toggleFullScreen(){
+  if(mainWindow.isFullScreen())
+    mainWindow.setFullScreen(false);
+  else
+    mainWindow.setFullScreen(true);
 }
 
 ipc.on('add-recent-file', function(event, arg) {
