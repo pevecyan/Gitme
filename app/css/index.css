@@ -1,0 +1,143 @@
+@font-face {
+  font-family: emoji;
+  
+  /* Fonts for text outside emoji blocks */
+  src: local('Droid Sans Mono'),
+       local('Lucida Console'),
+       local('Arial Monospaced'),
+       local(Arial);
+}
+ 
+@font-face {
+  font-family: emoji;
+ 
+  src: local('Apple Color Emoji'),
+       local('Android Emoji'),
+       local('Segoe UI'),
+       local(EmojiSymbols),
+       local(Symbola),
+       url('font/Symbola-Emoji.eot?#iefix') format('embedded-opentype'),
+       url('font/Symbola-Emoji.woff') format('woff'),
+       url('font/Symbola-Emoji.ttf') format('truetype');
+ 
+  /* Emoji unicode blocks */
+  unicode-range: U+1F300-1F5FF, U+1F600-1F64F, U+1F680-1F6FF, U+2600-26FF;
+}
+
+body,html{
+	width: 100%;
+	height:100%;
+}
+body{
+	margin: 0px;
+	background-color:#1f1f1f;
+}
+.editor-input{
+	width:100%;
+	height:100%;
+	float:left;
+	resize: none;
+	background-color: transparent;
+	border: none;
+	color: whitesmoke;
+  	margin-left: 5px;
+  	padding-top: 5px;
+}
+.editor-input:focus{
+    outline: 0;
+}
+.editor-input::-webkit-scrollbar{
+	background-color: transparent;
+	border: solid 1px #555;
+}
+.editor-input::-webkit-scrollbar-button{
+	height:0px;
+}
+.editor-input::-webkit-scrollbar-thumb{
+	background-color: #555;
+}
+
+
+.preview-content{
+	padding: 10px;
+}
+
+.preview{
+	width:100%;
+	height: 100%;
+	background-color: white;
+	overflow:auto !important;
+}
+
+.preview::-webkit-scrollbar{
+	background-color: transparent;
+	border: solid 1px #DDD;
+}
+.preview::-webkit-scrollbar-button{
+	height:0px;
+}
+.preview::-webkit-scrollbar-thumb{
+	background-color: #ddd;
+}
+
+.toolbar{
+	width: 100%;
+	height: 35px;
+	background-color: #111;
+}
+
+.toolbar-button{
+	height:27px;
+	width:27px;
+	background-color: #1f1f1f;
+	color: whitesmoke;
+	font-family:calibri;
+	text-align: center;
+	display: table-cell;
+	-webkit-user-select: none;
+	vertical-align: middle;
+	cursor: default
+}
+.toolbar-seperator{
+	width:5px;
+	display: table-cell;
+}
+.toolbar-content{
+	padding-top: 4px;
+	padding-left: 4px;
+}
+.bold{font-weight: 800;}
+.italic{font-style: italic;}
+.strikethrough{text-decoration: line-through;}
+.h1{font-size: 20px;}
+.h2{font-size: 18px;}
+.h3{font-size: 16px;}
+.h4{font-size: 14px;}
+.h5{font-size: 12px;}
+.h6{font-size: 10px;}
+
+.toolbar-button:hover{
+	background-color: #000;
+}
+
+
+.footer{
+	position: fixed;
+	bottom: 0px;
+	width:100%;
+	height:25px;
+	background-color: #0e7ffd  ;
+	z-index: 100;
+	color: white;
+	
+}
+.footer-content{
+	margin-top:3px;
+	margin-left: 5px;
+	font-family: calibri;
+}
+.emoji{
+	float:left;
+  	font-family: emoji;
+  	font-size: 15px;
+}

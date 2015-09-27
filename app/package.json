@@ -1,0 +1,8 @@
+{
+  "name": "Gitme",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "markdown-it": "^4.4.0"
+  }
+}

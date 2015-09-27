@@ -1,0 +1,24 @@
+#splitter {
+	height: 50%;
+	width: 100%;
+	/*border: 5px solid #aaa;*/
+	overflow: hidden;
+}
+#splitter div {
+
+}
+.vsplitbar {
+	width: 10px;
+	z-index: 2;
+}
+.vsplitbar:after {
+    content: '';
+    display: block;
+	height:100%;
+	margin-left:5;
+    border-left: 4px solid #111;
+ 	box-sizing:border-box;
+  	-moz-box-sizing:border-box;
+  	-webkit-box-sizing:border-box;
+	z-index: 2;
+}	

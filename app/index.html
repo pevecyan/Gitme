@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Language" content="en">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<script src="libs/jquery-1.11.3.min.js"></script>
+		<script>
+		    try {
+		        $ = jQuery = module.exports;
+		        // If you want module.exports to be empty, uncomment:
+		        // module.exports = {};
+		    } catch(e) {}
+		</script>
+		<script src="libs/splitter.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/splitter.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/markdown.css" />
+		<script src="js/window.js"></script>
+		
+	</head>
+	<body>
+	<div class="toolbar">
+		<div class="toolbar-content">
+			<div class="toolbar-button bold">B</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button italic">I</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button strikethrough">IO</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h1">h1</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h2">h2</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h3">h3</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h4">h4</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h5">h5</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button h6">h6</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button bullet">●</div>
+			<div class="toolbar-seperator"></div>
+			<div class="toolbar-button line">—</div>
+			
+		</div>
+	</div>
+	<div id="splitter">
+		<div style="min-width:200px">
+			<textarea id="editor" onblur="this.focus()" class="editor-input" placeholder="..."></textarea>
+		
+		</div>
+		<div  style="min-width:200px">
+			<div class="preview markdown-body">
+				<div class="preview-content">
+					
+				</div>
+			</div>
+		</div>
+
+	</div> 
+	<div class="footer">
+		<div class="footer-content">
+			<div class="emoji" id="status">✔️</div>
+		</div>
+	</div>
+		
+	</body>
+</html>
