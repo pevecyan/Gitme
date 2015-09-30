@@ -50,6 +50,14 @@ app.on('ready', function() {
   mainWindow.on('resize', function(){
     mainWindow.webContents.send('resize', 'true');
   });
+  mainWindow.on('maximize', function(){
+    mainWindow.webContents.send('resize', 'true');
+  });
+  mainWindow.on('unmaximize', function(){
+    mainWindow.webContents.send('resize', 'true');
+  });
+
+  
 });
 
 function createMenu(){
@@ -70,6 +78,7 @@ function createMenu(){
   var editMenu = new Menu();
   editMenu.append(new MenuItem({label:"Bold",accelerator: "Ctrl+B", click: editBold}));
   editMenu.append(new MenuItem({label:"Italic",accelerator: "Ctrl+I", click: editItalic}));
+  editMenu.append(new MenuItem({type:"separator"}));
   editMenu.append(new MenuItem({label:"H1",accelerator: "Ctrl+Shift+1", click: editH1}));
   editMenu.append(new MenuItem({label:"H2",accelerator: "Ctrl+Shift+2", click: editH2}));
   editMenu.append(new MenuItem({label:"H3",accelerator: "Ctrl+Shift+3", click: editH3}));

@@ -5,6 +5,10 @@ var dialog = remote.require('dialog');
 var editor = require('./js/editor.js');
 var filePath = null;
 
+//Splitter vars
+var splitterSizeRatio = 0.5;
+var width = 774;
+
 $(document).ready(function () {
 	$("#splitter").splitter({
 		splitVertical: true,
@@ -17,6 +21,16 @@ $(document).ready(function () {
 	
 	$('#editor').on('input', function(){
 		editor.compileText(false);
+	});
+	
+	$('.vsplitbar').on('mouseup', function(){
+		setTimeout(function() {
+			var splitterLeftSideSize = $('#splitterLeftSide').css('width').split('px')[0];
+			splitterSizeRatio = splitterLeftSideSize / width;
+			console.log(splitterSizeRatio);
+		}, 100);
+		
+		
 	});
 	
 	$('.toolbar-button').on('click', function(event){
@@ -37,8 +51,13 @@ function getInputSelection(elem){
 
 //IPCs
 ipc.on('resize', function(message) {
-	$("#splitter").trigger("resize");
-	setTimeout(function(){$("#splitter").trigger("resize");},100);
+	setTimeout(function(){
+		var splitterLeftSideSize = $('#splitterLeftSide').css('width').split('px')[0];
+		var splitterRightSideSize = $('#splitterRightSide').css('width').split('px')[0];
+		width = parseInt(splitterLeftSideSize)+parseInt(splitterRightSideSize)
+		$('#splitterLeftSide').css('width', width*splitterSizeRatio);
+		$("#splitter").trigger("resize");
+	},100);
 });
 ipc.on('file-new', function(){
 	newFileDialog();
@@ -58,7 +77,7 @@ function applyEffectOnSelection(effect){
 	var selectionRequired = true;
 	if(effect == "line")
 		selectionRequired = false;
-	
+		
 	var selection = getInputSelection($("#editor"));
 	if(selection.length>0 || effect=="line"){
 		var editedSelection =  selection;
