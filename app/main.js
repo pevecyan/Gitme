@@ -1,3 +1,4 @@
+var debug = false;
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 var ipc = require('ipc');
@@ -27,7 +28,7 @@ app.on('ready', function() {
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
   // Open the devtools.
-  mainWindow.openDevTools();
+  if(debug)mainWindow.openDevTools();
   
   
   // Emitted when the window is closed.
