@@ -89,7 +89,7 @@ body{
 .toolbar-button{
 	height:27px;
 	width:27px;
-	background-color: #1f1f1f;
+	/*background-color: #1f1f1f;*/
 	color: whitesmoke;
 	font-family:calibri;
 	text-align: center;
@@ -97,6 +97,11 @@ body{
 	-webkit-user-select: none;
 	vertical-align: middle;
 	cursor: default
+}
+.toolbar-visible-seperator{
+	width:2px;
+	background-color: #1f1f1f;
+	display: table-cell;
 }
 .toolbar-seperator{
 	width:5px;
@@ -120,6 +125,16 @@ body{
 	background-color: #000;
 }
 
+
+.container{
+	background-color:#111;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#splitter{
+	background-color: #1f1f1f;
+}
 
 .footer{
 	position: fixed;

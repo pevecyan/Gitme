@@ -1,4 +1,4 @@
-var debug = false;
+var debug = true;
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 var ipc = require('ipc');
@@ -61,6 +61,8 @@ app.on('ready', function() {
   
 });
 
+//PUBLIC MENUS
+var previewMenuItem = null;
 function createMenu(){
 
   var Menu = require('menu');
@@ -93,7 +95,11 @@ function createMenu(){
   editMenu.append(new MenuItem({label:"Select All",accelerator: "Ctrl+A", click: function(){editText('select-all');}}));
   
   var viewMenu = new Menu();
+  viewMenu.append(new MenuItem({label:"Center Splitter", click: function(){centerSplitter();}}));
+  previewMenuItem = new MenuItem({type:"checkbox", label:"Preview", checked:true, click:function(menuItem){togglePreview(menuItem.checked);}});
+  viewMenu.append(previewMenuItem);
   viewMenu.append(new MenuItem({label:"Toggle Full Screen", accelerator:"F11", click: function(){ toggleFullScreen();}}));
+ 
   
   var menu = new Menu();
   menu.append(new MenuItem({ label: 'File', type: "submenu",submenu:fileMenu}));
@@ -152,6 +158,16 @@ function toggleFullScreen(){
   else
     mainWindow.setFullScreen(true);
 }
+function centerSplitter(){
+  mainWindow.webContents.send('center-splitter', true);  
+} 
+function togglePreview(isPreview){
+  mainWindow.webContents.send('toggle-preview', isPreview)
+}
+
+ipc.on('toggle-preview', function(event, isPreview){
+  previewMenuItem.checked = isPreview;
+});
 
 ipc.on('add-recent-file', function(event, arg) {
   app.addRecentDocument(arg);

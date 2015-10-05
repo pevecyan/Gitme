@@ -28,6 +28,7 @@
 			<div class="toolbar-seperator"></div>
 			<div class="toolbar-button strikethrough" title="Strikethrough">IO</div>
 			<div class="toolbar-seperator"></div>
+			<div class="toolbar-visible-seperator"></div>
 			<div class="toolbar-seperator"></div>
 			<div class="toolbar-button h1" title="Heading 1">h1</div>
 			<div class="toolbar-seperator"></div>
@@ -41,6 +42,7 @@
 			<div class="toolbar-seperator"></div>
 			<div class="toolbar-button h6" title="Heading 6">h6</div>
 			<div class="toolbar-seperator"></div>
+			<div class="toolbar-visible-seperator"></div>
 			<div class="toolbar-seperator"></div>
 			<div class="toolbar-button bullet" title="Bullet">●</div>
 			<div class="toolbar-seperator"></div>
@@ -48,20 +50,22 @@
 			
 		</div>
 	</div>
-	<div id="splitter">
-		<div id="splitterLeftSide" style="min-width:200px">
-			<textarea id="editor" onblur="this.focus()" class="editor-input" placeholder="..."></textarea>
-		
-		</div>
-		<div id="splitterRightSide" style="min-width:200px">
-			<div class="preview markdown-body">
-				<div class="preview-content">
-					
+	<div class="container">
+		<div id="splitter">
+			<div id="splitterLeftSide" style="min-width:200px">
+				<textarea id="editor" onblur="this.focus()" class="editor-input" placeholder="..."></textarea>
+			
+			</div>
+			<div id="splitterRightSide">
+				<div class="preview markdown-body">
+					<div class="preview-content">
+						
+					</div>
 				</div>
 			</div>
+	
 		</div>
-
-	</div> 
+	</div>
 	<div class="footer">
 		<div class="footer-content">
 			<div class="emoji" id="status">✔️</div>

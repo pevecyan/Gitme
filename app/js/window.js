@@ -19,25 +19,48 @@ $(document).ready(function () {
 	});
 	$("#splitter").trigger("resize");
 	
+	//width on ready
+	var splitterLeftSideSize = $('#splitterLeftSide').css('width').split('px')[0];
+	var splitterRightSideSize = $('#splitterRightSide').css('width').split('px')[0];
+	width = parseInt(splitterLeftSideSize)+parseInt(splitterRightSideSize)
+	
 	$('#editor').on('input', function(){
 		editor.compileText(false);
 	});
 	
+	$('.vsplitbar').on('')
+	
+	$(window).on('mouseup', function(){
+		mouseUpSplitbar();
+	});
+	
 	$('.vsplitbar').on('mouseup', function(){
-		setTimeout(function() {
-			var splitterLeftSideSize = $('#splitterLeftSide').css('width').split('px')[0];
-			splitterSizeRatio = splitterLeftSideSize / width;
-			console.log(splitterSizeRatio);
-		}, 100);
-		
-		
+		mouseUpSplitbar();
 	});
 	
 	$('.toolbar-button').on('click', function(event){
 		console.log(event);
 		applyEffectOnSelection(event.toElement.className.split(" ")[1]);
 	});
+	
+	$('#editor').focus();
 });
+
+function mouseUpSplitbar(){
+	setTimeout(function() {
+			var oldSplitterSizeRatio = splitterSizeRatio;
+			var splitterLeftSideSize = $('#splitterLeftSide').css('width').split('px')[0];
+			splitterSizeRatio = splitterLeftSideSize / width;
+			console.log(splitterSizeRatio);
+			if(splitterSizeRatio == 1){
+				//CHANGE checkbox to true
+				ipc.send('toggle-preview', false);
+			}else if(oldSplitterSizeRatio == 1 && splitterSizeRatio != 1){
+				//change preview checkbox to false
+				ipc.send('toggle-preview', true); 
+			}
+		}, 100);
+}
 
 function getInputSelection(elem){
  if(typeof elem != "undefined"){
@@ -70,6 +93,22 @@ ipc.on('file-save', function(as) {
 });
 ipc.on('edit-markdown', function(effect){
 	applyEffectOnSelection(effect);
+});
+ipc.on('center-splitter', function(){
+	$('#splitterLeftSide').css('width', width/2);
+	$("#splitter").trigger("resize");
+	splitterSizeRatio = 0.5;
+});
+ipc.on('toggle-preview', function(isPreview){
+	if(isPreview){
+		$('#splitterLeftSide').css('width', width/2);
+		$("#splitter").trigger("resize");
+		splitterSizeRatio = 0.5;
+	}else{	
+		$('#splitterLeftSide').css('width', width);
+		$("#splitter").trigger("resize");
+		splitterSizeRatio = 1;
+	}
 });
 
 //Editing functions
