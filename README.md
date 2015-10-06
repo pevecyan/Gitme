@@ -6,6 +6,7 @@
 Set up environment to start working on this project.
 #### Requirements:
 * nodejs (npm)
+
 #### Setup
 * Get source code from [GitHub](https://github.com/pevecyan/Gitme).
 Directory structure should look something like this:
@@ -21,6 +22,7 @@ npm install electron-prebuilt --save-dev
 npm install markdown-it
 ```
 * And you are ready to go!
+
 #### Run
 * To start GitMe run following command in GitMe directory
 ```
